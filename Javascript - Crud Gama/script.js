@@ -1,15 +1,14 @@
-var selectedRow = null;
-function onFormSubmit(e){
-    
-    var formData = readFormData();
-    if(selectedRow === null){
-        insertNewRecord(formData);
-    }
-    else{
-        updateRecord(formData);
+var selectedRow = null
+
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
         resetForm();
     }
-    
 }
 
 //Retrieve the data
@@ -44,6 +43,7 @@ function resetForm(){
     document.getElementById('product').value = '';
     document.getElementById('qty').value = '';
     document.getElementById('perPrice').value = '';
+    selectedRow = null;
 }
 
 //Editar tabela
